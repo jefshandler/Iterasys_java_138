@@ -1,0 +1,42 @@
+TEstes de Unidades
+criar scripts que testem métodos e funções
+"Código que testa código"
+
+Muitas pessoas sebem apenas fazer testes individuais
+
+Exitem uma forma melhor de executar multiplos teste variando seus valores
+é chamado de DDT - Data Driven  TEsting = test direcionado por dados
+
+Normalmente o teste de unidade são criado após a programação
+
+
+em uma sprint , namanh da 1 semana nos conversamos sobre o que sera contrudo]
+de tarde o po e o qa se reunum para definir os critérios de aceite(dado-quando-então)
+
+enquanto isso os devs montam o esqueleto do codigo, voltando um resultado fixo
+
+na reunião ficou definido que nesta sprint nos contruirimos 4 funçoes de cálculo de área:
+
+- public double calcularQuadrado (doble lado){ return 0; }
+- public double calcularRetangulo (doble largura, doble comprimento){ return 0; }
+- public double calcularTriangulo (doble largura, doble comprimento){ return 0; }
+- public double calcularCirculo (double raio){ return 0; }
+
+nos dias seguintes, conforme os devs completem o código,
+os testes vao começar a passar.
+
+então testes funcionando é uma medida do prograsso do software
+
+no TDD quando executamos a bateria de testes?
+R: uma vez por dia ou quando há um novo build.
+
+esse processo pode evoluir para uma processo de integração continua (CI)
+
+DEVS
+                            Passou
+ cria os builds ---> gera uma realese(versão candidata) -----> Ambiente Qualidade(ex)
+ Desenvolvimento >-------------> Integração Continua >-----------> ambiente teste
+
+
+
+
