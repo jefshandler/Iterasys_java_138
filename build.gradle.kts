@@ -10,6 +10,7 @@ repositories {
 }
 
 dependencies {
+    
     // https://mvnrepository.com/artifact/org.testng/testng
     testImplementation("org.testng:testng:7.7.1")
     implementation ("com.google.code.gson:gson:2.10.1")
