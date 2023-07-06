@@ -4,20 +4,21 @@ import com.google.gson.Gson;
 import entities.AccountEntity;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.ITestContext;
 import io.restassured.response.Response;
 import static io.restassured.RestAssured.given;
 
 import static org.hamcrest.Matchers.is;
 
 // classe
-public class Account {
+public class TestAccount {
     //3.1 - atributos
     String userId;
     String ct = "application/json"; // contentType da API
     String jsonBody; //guardar o json que sera enviado
     String uri = "https://bookstore.toolsqa.com/Account/v1/"; // endereço base
     Response resposta; //vai guardar o retorino da API
-    String token; //guardar o token  - autenticação do usuário
+    static String token; //guardar o token  - autenticação do usuário
 
     //3.1.1 Instanciar classes externas
     Gson gson = new Gson(); //instanciar objeto que converte classe para json
@@ -28,10 +29,10 @@ public class Account {
 
     // Método #1 - Criar usu�rio
     @Test(priority = 1)
-    public void testCreateUser(){
+    public void testCreateUser(ITestContext context){
         //Arrange - Configura
 
-        account.userName = "Kpula7"; // entrada e sa�da( resultado esperado)
+        account.userName = "Kpula9"; // entrada e sa�da( resultado esperado)
         account.password = "Aa!123456"; // entrada
         //Dados de entrada e saida
 //        String userName = "charlie"; //nome do usu�rio
@@ -62,13 +63,14 @@ public class Account {
         // extrair o userID (identificação do usuário)
 
         userId = resposta.jsonPath().getString("userID");
+        context.setAttribute("userID", userId);
         System.out.println("UserID extraido: " + userId);
 
 
     } // fim do método de criação de usuário
 
     @Test(priority = 2)
-    public void testGenerateToken(){
+    public void testGenerateToken(ITestContext context){
         //Arrange - Configura
         String expectedStatus = "Success";
         String expectedResult = "User authorized successfully.";
@@ -94,6 +96,7 @@ public class Account {
         ; // fim da linha do REST-assured
         // extração do token
         token = resposta.jsonPath().getString("token");
+        context.setAttribute("token", token);
         System.out.println("Token extraido: " + token);
         // Assert - Valida
         Assert.assertTrue(token.length() != 0);
